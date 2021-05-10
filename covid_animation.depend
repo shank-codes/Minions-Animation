@@ -1,0 +1,7 @@
+# depslib dependency file v1.0
+1620488321 source:c:\users\hp\desktop\cg\project\covid_animation\main.cpp
+	<windows.h>
+	<GL/glut.h>
+	<stdlib.h>
+	<math.h>
+
