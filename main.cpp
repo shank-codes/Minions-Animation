@@ -30,6 +30,8 @@ void Idle()
     // get excited
     if(act==2)
     {
+        //hand movement with excitement
+        /*
         for(i=0;i<2;i++)
         {
             if(turn[i]==0&&angle[i]<45)
@@ -41,6 +43,7 @@ void Idle()
             if(angle[i]<=-45)
                 turn[i]=0;
         }
+        */
         if(j<=10&&k==0)
             j+=0.3;
         if(j>10)
@@ -646,8 +649,38 @@ void hand(int mood)
     glPopMatrix();
     glPopMatrix();
 }
-void cloth()
+void cloth(int mood)
 {
+    if(mood==1 &&( moveL==1 || moveR==1))
+    {
+        glPushMatrix();
+        glTranslatef(l,-50,0);
+        glScalef(1,0.6,1);
+        glColor3f(0,0,1);
+        circle(170,180,360);
+        glPopMatrix();
+        glBegin(GL_POLYGON);
+        glVertex2f(-100+l,-100);
+        glVertex2f(100+l,-100);
+        glVertex2f(100+l,50);
+        glVertex2f(-100+l,50);
+        glEnd();
+        glBegin(GL_POLYGON);
+        glColor3f(0,0,1);
+        glVertex2f(-100+l,30);
+        glVertex2f(-90+l,50);
+        glVertex2f(-170+l,90);
+        glVertex2f(-170+l,70);
+        glEnd();
+        glBegin(GL_POLYGON);
+        glColor3f(0,0,1);
+        glVertex2f(100+l,30);
+        glVertex2f(90+l,50);
+        glVertex2f(170+l,90);
+        glVertex2f(170+l,70);
+        glEnd();
+        return;
+    }
     glPushMatrix();
     glTranslatef(0,-50,0);
     glScalef(1,0.6,1);
@@ -677,6 +710,59 @@ void cloth()
 }
 void eyes(int mood)
 {
+    if(mood==1 &&( moveL==1 || moveR==1))
+    {
+        //left
+        glColor3f(0.75,0.75,0.75);
+        glPushMatrix();
+        glTranslatef(-59+l,200,0);
+        circle(67,0,360);
+        glColor3f(1,1,1);
+        circle(50,0,360);
+        glPopMatrix();
+        //right
+        glColor3f(0.75,0.75,0.75);
+        glPushMatrix();
+        glTranslatef(59+l,200,0);
+        circle(67,0,360);
+        glColor3f(1,1,1);
+        circle(50,0,360);
+        glPopMatrix();
+
+        glColor3f(0.9,0,0.9);
+
+        glPushMatrix();
+        if(eyem==0)
+            glTranslatef(-40+l,200,0);
+        if(eyem==1)
+        {
+            glTranslatef(-60+l,200,0);
+            glRotatef(angle[4],0,0,1);
+            glTranslatef(15+l,0,0);
+        }
+        circle(22,0,360);
+        glColor3f(0,0,0);
+        circle(11,0,360);
+        glPopMatrix();
+
+        //right eyeball
+        glColor3f(0.9,0,0.9);
+
+        glPushMatrix();
+        if(eyem==0)
+            glTranslatef(40+l,200,0);
+        if(eyem==1)
+        {
+            glTranslatef(60+l,200,0);
+            glRotatef(angle[4],0,0,1);
+            glTranslatef(15+l,0,0);
+        }
+        circle(22,0,360);
+        glColor3f(0,0,0);
+        circle(11,0,360);
+        glPopMatrix();
+        return;
+    }
     //left
     glColor3f(0.75,0.75,0.75);
     glPushMatrix();
@@ -737,8 +823,33 @@ void eyes(int mood)
     glPopMatrix();
 
 }
-void legs()
+void legs(int mood)
 {
+    if(mood==1 &&( moveL==1 || moveR==1))
+    {
+        glColor3f(0,0,1);
+        glPushMatrix();
+        glTranslatef(-50+l,-140,0);
+        glBegin(GL_POLYGON);
+        glVertex2f(-35,50);
+        glVertex2f(30,50);
+        glVertex2f(25,-50);
+        glVertex2f(-25,-50);
+        glEnd();
+        glPopMatrix();
+
+        glColor3f(0,0,1);
+        glPushMatrix();
+        glTranslatef(50+l,-140,0);
+        glBegin(GL_POLYGON);
+        glVertex2f(-35,50);
+        glVertex2f(30,50);
+        glVertex2f(25,-50);
+        glVertex2f(-25,-50);
+        glEnd();
+        glPopMatrix();
+        return;
+    }
     glColor3f(0,0,1);
     glPushMatrix();
     glTranslatef(-50,-140,0);
@@ -761,8 +872,48 @@ void legs()
     glEnd();
     glPopMatrix();
 }
-void shoes()
+void shoes(int mood)
 {
+    if(mood==1 &&( moveL==1 || moveR==1))
+    {
+        //left
+        glPushMatrix();
+        glTranslatef(-110+l,-410,0);
+        glColor3f(0,0,0);
+        glBegin(GL_POLYGON);
+        circle2(15,140,240);
+        glVertex2f(60,-15);
+        glVertex2f(60,20);
+        glEnd();
+        glColor3f(0,0,0);
+        glBegin(GL_POLYGON);
+        glVertex2f(40,-15);
+        glVertex2f(85,-15);
+        glVertex2f(85,20);
+        glVertex2f(40,20);
+        glEnd();
+        glPopMatrix();
+
+
+        //right
+        glPushMatrix();
+        glTranslatef(110+l,-410,0);
+        glColor3f(0,0,0);
+        glBegin(GL_POLYGON);
+        circle3(15,40,-40);
+        glVertex2f(-60,-15);
+        glVertex2f(-60,20);
+        glEnd();
+        glColor3f(0,0,0);
+        glBegin(GL_POLYGON);
+        glVertex2f(-40,-15);
+        glVertex2f(-85,-15);
+        glVertex2f(-85,20);
+        glVertex2f(-40,20);
+        glEnd();
+        glPopMatrix();
+        return;
+    }
     //left
     glPushMatrix();
     glTranslatef(-110,-410,0);
@@ -802,6 +953,36 @@ void shoes()
 }
 void legsi(int mood)
 {
+    if(mood==1 &&( moveL==1 || moveR==1))
+    {
+        //Left
+        glPushMatrix();
+        glTranslatef(-50+l,-140,0);
+
+        glColor3f(1,0.3,0.3);
+
+        glBegin(GL_POLYGON);
+        glVertex2f(-20,0);
+        glVertex2f(25,0);
+        glVertex2f(25,-67);
+        glVertex2f(-20,-67);
+        glEnd();
+        glPopMatrix();
+        //Right
+        glPushMatrix();
+        glTranslatef(50+l,-140,0);
+
+        glColor3f(0.9,0,0.9);
+
+        glBegin(GL_POLYGON);
+        glVertex2f(-25,0);
+        glVertex2f(20,0);
+        glVertex2f(20,-67);
+        glVertex2f(-25,-67);
+        glEnd();
+        glPopMatrix();
+        return;
+    }
     //Left
     glPushMatrix();
     glTranslatef(-50,-140,0);
@@ -859,18 +1040,18 @@ void display()
     if(mood==2)
         mouthangry();
     hand(mood);
-    cloth();
+    cloth(mood);
     eyes(mood);
     legsi(mood);
-    legs();
+    legs(mood);
     glPopMatrix();
     }
 
-    for(int i=-1000;i<=1000;i+=1000)
+    for(int i=-1000,mood=0;i<=1000,mood<3;i+=1000,mood++)
     {
         glPushMatrix();
         glTranslatef(i,0,0);
-        shoes();
+        shoes(mood);
         glPopMatrix();
     }
 
@@ -899,6 +1080,7 @@ void flag_menu(int num)
         case 8:eyem=0;
                 break;
         case 9:
+                l=0;
                 act=0;
                 moveL=0;
                 moveR=0;
