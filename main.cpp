@@ -3,14 +3,28 @@
 #include<stdlib.h>
 #include<iostream>
 #include<math.h>
+#include<string>
 
 using namespace std;
 
 float angle[]={0,0,0,0,0},j,k=0,l=0,m;
-int turn[]={0,1,0,0},i,act=0,eyem=0,f=0;
+int turn[]={0,1,0,0},i,act=0,eyem=0,f=0,text_no=0;
 int moveL=0,moveR=0;
 static int submenu_id;
 static int submenu_id1;
+
+void *font = GLUT_BITMAP_9_BY_15;
+
+void output(int x, int y, char *str)
+{
+  int len, i;
+  glRasterPos2f(x, y);
+  len = (int) strlen(str);
+  for (i = 0; i < len; i++)
+  {
+    glutBitmapCharacter(font, str[i]);
+  }
+}
 
 void Idle()
 {
@@ -72,6 +86,11 @@ void Idle()
     {
         if(l>=-501 && l<=500)
             l+=0.3;
+        else {
+            l=500;
+            moveR=0;
+        }
+
     }
 }
 void myReshape(int w,int h)
@@ -154,36 +173,58 @@ void body(int mood)
         glScalef(1,0.6,1);
         circle(170,180,360);     // semicircle from 180 to 360
         glPopMatrix();
-
+        return;
     }
-    else
+
+
+    if(mood==0)
+        glColor3f(1,1,0);
+    if(mood==1)
     {
+        // ******
+        //draw strands here
+        // **********
 
-        if(mood==0)
-            glColor3f(1,1,0);
-        if(mood==1)
-            glColor3f(0.9,0,0.9);
-        if(mood==2)
-            glColor3f(1,0.3,0.3);
-
+        glColor3f(0.9,0,0.9);
         glPushMatrix();
-        glTranslatef(0,200,0);   //setting base of a semicircle as y=200
-        circle(170,0,180);
-        glPopMatrix();
-
         glBegin(GL_POLYGON);
-        glVertex2f(-170,-50);
-        glVertex2f(170,-50);
-        glVertex2f(170,200);
-        glVertex2f(-170,200);
+        glVertex2f(-5,350);
+        glVertex2f(5,350);
+        glVertex2f(5,400);
+        glVertex2f(-5,400);
         glEnd();
-
-        glPushMatrix();
-        glTranslatef(0,-50,0);   //setting base of a semicircle as y=-50
-        glScalef(1,0.6,1);
-        circle(170,180,360);     // semicircle from 180 to 360
+        glBegin(GL_POLYGON);
+        glVertex2f(170,200);
+        glVertex2f(200,200);
+        glVertex2f(200,180);
+        glVertex2f(170,180);
+        glEnd();
         glPopMatrix();
     }
+    if(mood==2)
+    {
+        if(l==500)
+            glColor3f(1,0.3,0.3);
+        else
+            glColor3f(1,1,0);
+    }
+    glPushMatrix();
+    glTranslatef(0,200,0);   //setting base of a semicircle as y=200
+    circle(170,0,180);
+    glPopMatrix();
+
+    glBegin(GL_POLYGON);
+    glVertex2f(-170,-50);
+    glVertex2f(170,-50);
+    glVertex2f(170,200);
+    glVertex2f(-170,200);
+    glEnd();
+
+    glPushMatrix();
+    glTranslatef(0,-50,0);   //setting base of a semicircle as y=-50
+    glScalef(1,0.6,1);
+    circle(170,180,360);     // semicircle from 180 to 360
+    glPopMatrix();
 
     /*
     glPushMatrix();
@@ -355,6 +396,7 @@ void mouthhappy()
 }
 void mouthangry()
 {
+
     glColor3f(0,0,0);
     glPushMatrix();
     glTranslatef(0,120,0);
@@ -544,7 +586,12 @@ void hand(int mood)
     if(mood==1)
         glColor3f(0.9,0,0.9);
     if(mood==2)
-        glColor3f(1,0.3,0.3);
+    {
+        if(l==500)
+            glColor3f(1,0.3,0.3);
+        else
+            glColor3f(1,1,0);
+    }
 
     glPushMatrix();
     glTranslatef(30,160,0);    //complete circle near eyes
@@ -604,7 +651,12 @@ void hand(int mood)
     if(mood==1)
         glColor3f(0.9,0,0.9);
     if(mood==2)
-        glColor3f(1,0.3,0.3);
+    {
+        if(l==500)
+            glColor3f(1,0.3,0.3);
+        else
+            glColor3f(1,1,0);
+    }
     circle(25,0,360);
     glPopMatrix();
 
@@ -786,7 +838,12 @@ void eyes(int mood)
     if(mood==1)
         glColor3f(0.9,0,0.9);
     if(mood==2)
-        glColor3f(1,0.3,0.3);
+    {
+        if(l==500)
+            glColor3f(1,0.3,0.3);
+        else
+            glColor3f(1,1,0);
+    }
     glPushMatrix();
     if(eyem==0)
         glTranslatef(-40,200,0);
@@ -807,7 +864,12 @@ void eyes(int mood)
     if(mood==1)
         glColor3f(0.9,0,0.9);
     if(mood==2)
-        glColor3f(1,0.3,0.3);
+    {
+        if(l==500)
+            glColor3f(1,0.3,0.3);
+        else
+            glColor3f(1,1,0);
+    }
     glPushMatrix();
     if(eyem==0)
         glTranslatef(40,200,0);
@@ -1009,7 +1071,12 @@ void legsi(int mood)
     if(mood==1)
         glColor3f(0.9,0,0.9);
     if(mood==2)
-        glColor3f(1,0.3,0.3);
+    {
+        if(l==500)
+            glColor3f(1,0.3,0.3);
+        else
+            glColor3f(1,1,0);
+    }
     glBegin(GL_POLYGON);
     glVertex2f(-25,0);
     glVertex2f(20,0);
@@ -1018,10 +1085,47 @@ void legsi(int mood)
     glEnd();
     glPopMatrix();
 }
+void displayText() {
+    glPushMatrix();
+    glColor3f(0,0,0);
+    glTranslatef(-100,-700,0);
+    switch(text_no)
+    {
+    case 0:
+        output(0,0,"");
+        break;
+    case 1:
+        output(0,0,"HII HELLO HOW ARE YOU");
+        break;
+    case 2:
+        output(0,0,"HII");
+        break;
+    case 3:
+        output(0,0,"HII");
+        break;
+    case 4:
+        output(0,0,"HII");
+        break;
+    case 5:
+        output(0,0,"HII");
+        break;
+    default:
+        output(0,0,"boom");
+    }
+    glPopMatrix();
+}
 void display()
 {
     glClear(GL_COLOR_BUFFER_BIT);
     land();
+
+    glColor3f(1,0,0);
+    glBegin(GL_LINES);
+    glVertex2f(0,800);
+    glVertex2f(0,-1000);
+    glEnd();
+
+    displayText();
     for(int i=-1000,mood=0;i<=1000, mood<3;i+=1000, mood++){
     glPushMatrix();
     glTranslatef(i,-200,0);
@@ -1029,24 +1133,23 @@ void display()
         glTranslatef(0,j,0);
     if(act==3)
         glRotatef(angle[3],0,0,1);
-    body(mood);
+    body(mood);                     // l is needed
     hair(mood);
     specsframe(mood);
 
     if(mood==0)
         mouthhappy();
     if(mood==1)
-        mouthzombie();
+        mouthzombie();             // l is needed
     if(mood==2)
         mouthangry();
     hand(mood);
     cloth(mood);
-    eyes(mood);
+    eyes(mood);                    // l is needed
     legsi(mood);
     legs(mood);
     glPopMatrix();
     }
-
     for(int i=-1000,mood=0;i<=1000,mood<3;i+=1000,mood++)
     {
         glPushMatrix();
@@ -1058,6 +1161,14 @@ void display()
     glFlush();
     glutPostRedisplay();
     glutSwapBuffers();     //glutSwapBuffers swaps the buffers of the current window if double buffered
+}
+void animation()
+{
+    text_no=1;
+    act=1;
+
+    Sleep(3000);
+    act=2;
 }
 void flag_menu(int num)
 {
@@ -1071,7 +1182,9 @@ void flag_menu(int num)
             moveL=0;
             moveR=1;
                 break;
-        case 4:act=1;
+        case 4:
+                text_no=1;
+                act=1;
                 break;
         case 5:act=2;
                 break;
@@ -1087,10 +1200,18 @@ void flag_menu(int num)
                 eyem=0;
                 break;
         case 10:exit(0);
+        case 11: animation();
         default:break;
     }
   glutPostRedisplay();
 }
+
+/*
+
+
+glColor3f(0,0,1);
+    output(160, 660, "N.M.A.M INSTITUTE OF TECHNOLOGY");
+*/
 
 int main()
 {
@@ -1109,11 +1230,12 @@ int main()
 	glutAddMenuEntry("Get Excited",5);
 	glutAddMenuEntry("Look Around",7);
 	glutAddMenuEntry("Look Straight",8);
-	glutAddMenuEntry("Stop Moving",9);
+	glutAddMenuEntry("Reset",9);
 	glutCreateMenu(flag_menu);
 	glutAddSubMenu("Move", submenu_id);
 	glutAddSubMenu("Animation",submenu_id1);
 	glutAddMenuEntry("Quit",10);
+	glutAddMenuEntry("Animation",11);
 	glutAttachMenu(GLUT_RIGHT_BUTTON);
     glutMainLoop();
     return 0;
