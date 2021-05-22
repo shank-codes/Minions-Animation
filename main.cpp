@@ -8,10 +8,13 @@
 using namespace std;
 
 float angle[]={0,0,0,0,0},j,k=0,l=0,m;
-int turn[]={0,1,0,0},i,act=0,eyem=0,f=0,text_no=0;
-int moveL=0,moveR=0;
+int turn[]={0,1,0,0},i,act=0,eyem=0,f=0,text_no=0,view=1;
+int moveL=0,moveR=0,o=0;
+bool setAnimation=false;
+
 static int submenu_id;
 static int submenu_id1;
+static int submenu_page;
 
 void *font = GLUT_BITMAP_9_BY_15;
 
@@ -173,6 +176,70 @@ void body(int mood)
         glScalef(1,0.6,1);
         circle(170,180,360);     // semicircle from 180 to 360
         glPopMatrix();
+
+        glPushMatrix();
+        glTranslatef(l,0,0);
+        glBegin(GL_POLYGON);//T
+        glVertex2f(-10,350);
+        glVertex2f(10,350);
+        glVertex2f(10,400);
+        glVertex2f(-10,400);
+        glEnd();
+        glBegin(GL_POLYGON);//T
+        glVertex2f(-30,400);
+        glVertex2f(30,400);
+        glVertex2f(30,420);
+        glVertex2f(-30,420);
+        glEnd();
+        glBegin(GL_POLYGON);//lB
+        glVertex2f(170,200);
+        glVertex2f(170,180);
+        glVertex2f(200,180);
+        glVertex2f(200,200);
+        glEnd();
+        glBegin(GL_POLYGON);//Lb
+        glVertex2f(200,220);
+        glVertex2f(200,160);
+        glVertex2f(220,160);
+        glVertex2f(220,220);
+        glEnd();
+        glBegin(GL_POLYGON);//RB
+        glVertex2f(-170,200);
+        glVertex2f(-200,200);
+        glVertex2f(-200,180);
+        glVertex2f(-170,180);
+        glEnd();
+        glBegin(GL_POLYGON);//Rb
+        glVertex2f(-220,220);
+        glVertex2f(-220,160);
+        glVertex2f(-200,160);
+        glVertex2f(-200,220);
+        glEnd();
+        glBegin(GL_POLYGON);//RTcheck
+        glVertex2f(80,320);
+        glVertex2f(90,300);
+        glVertex2f(155,330);
+        glVertex2f(140,350);
+        glEnd();
+        glBegin(GL_POLYGON);//RTcheck
+        glVertex2f(130,360);
+        glVertex2f(160,320);
+        glVertex2f(170,330);
+        glVertex2f(140,370);
+        glEnd();
+        glBegin(GL_POLYGON);//LTcheck
+        glVertex2f(-155,330);
+        glVertex2f(-90,300);
+        glVertex2f(-80,320);
+        glVertex2f(-140,350);
+        glEnd();
+        glBegin(GL_POLYGON);//RTcheck
+        glVertex2f(-170,330);
+        glVertex2f(-160,320);
+        glVertex2f(-130,360);
+        glVertex2f(-140,370);
+        glEnd();
+        glPopMatrix();
         return;
     }
 
@@ -181,23 +248,67 @@ void body(int mood)
         glColor3f(1,1,0);
     if(mood==1)
     {
-        // ******
-        //draw strands here
-        // **********
-
         glColor3f(0.9,0,0.9);
         glPushMatrix();
-        glBegin(GL_POLYGON);
-        glVertex2f(-5,350);
-        glVertex2f(5,350);
-        glVertex2f(5,400);
-        glVertex2f(-5,400);
+        glBegin(GL_POLYGON);//T
+        glVertex2f(-10,350);
+        glVertex2f(10,350);
+        glVertex2f(10,400);
+        glVertex2f(-10,400);
         glEnd();
-        glBegin(GL_POLYGON);
+        glBegin(GL_POLYGON);//T
+        glVertex2f(-30,400);
+        glVertex2f(30,400);
+        glVertex2f(30,420);
+        glVertex2f(-30,420);
+        glEnd();
+        glBegin(GL_POLYGON);//lB
         glVertex2f(170,200);
-        glVertex2f(200,200);
-        glVertex2f(200,180);
         glVertex2f(170,180);
+        glVertex2f(200,180);
+        glVertex2f(200,200);
+        glEnd();
+        glBegin(GL_POLYGON);//Lb
+        glVertex2f(200,220);
+        glVertex2f(200,160);
+        glVertex2f(220,160);
+        glVertex2f(220,220);
+        glEnd();
+        glBegin(GL_POLYGON);//RB
+        glVertex2f(-170,200);
+        glVertex2f(-200,200);
+        glVertex2f(-200,180);
+        glVertex2f(-170,180);
+        glEnd();
+        glBegin(GL_POLYGON);//Rb
+        glVertex2f(-220,220);
+        glVertex2f(-220,160);
+        glVertex2f(-200,160);
+        glVertex2f(-200,220);
+        glEnd();
+        glBegin(GL_POLYGON);//RTcheck
+        glVertex2f(80,320);
+        glVertex2f(90,300);
+        glVertex2f(155,330);
+        glVertex2f(140,350);
+        glEnd();
+        glBegin(GL_POLYGON);//RTcheck
+        glVertex2f(130,360);
+        glVertex2f(160,320);
+        glVertex2f(170,330);
+        glVertex2f(140,370);
+        glEnd();
+        glBegin(GL_POLYGON);//LTcheck
+        glVertex2f(-155,330);
+        glVertex2f(-90,300);
+        glVertex2f(-80,320);
+        glVertex2f(-140,350);
+        glEnd();
+        glBegin(GL_POLYGON);//RTcheck
+        glVertex2f(-170,330);
+        glVertex2f(-160,320);
+        glVertex2f(-130,360);
+        glVertex2f(-140,370);
         glEnd();
         glPopMatrix();
     }
@@ -248,8 +359,10 @@ void body(int mood)
 }
 void hair(int mood)
 {
-    if(mood==1 &&( moveL==1 || moveR==1))
+    if(mood==1 /*&&( moveL==1 || moveR==1)*/)
     {
+        return;
+        /*
     glPushMatrix();
     glTranslatef(-20+l,265,0);
     glBegin(GL_LINE_STRIP);
@@ -283,6 +396,7 @@ void hair(int mood)
     glEnd();
     glPopMatrix();
     return;
+    */
     }
 
     glPushMatrix();
@@ -1017,11 +1131,10 @@ void legsi(int mood)
 {
     if(mood==1 &&( moveL==1 || moveR==1))
     {
+        glColor3f(0.9,0,0.9);
         //Left
         glPushMatrix();
         glTranslatef(-50+l,-140,0);
-
-        glColor3f(1,0.3,0.3);
 
         glBegin(GL_POLYGON);
         glVertex2f(-20,0);
@@ -1034,7 +1147,7 @@ void legsi(int mood)
         glPushMatrix();
         glTranslatef(50+l,-140,0);
 
-        glColor3f(0.9,0,0.9);
+
 
         glBegin(GL_POLYGON);
         glVertex2f(-25,0);
@@ -1052,9 +1165,14 @@ void legsi(int mood)
    if(mood==0)
         glColor3f(1,1,0);
     if(mood==1)
-        glColor3f(1,0.3,0.3);
-    if(mood==2)
         glColor3f(0.9,0,0.9);
+    if(mood==2)
+    {
+        if(l==500)
+            glColor3f(1,0.3,0.3);
+        else
+            glColor3f(1,1,0);
+    }
 
     glBegin(GL_POLYGON);
     glVertex2f(-20,0);
@@ -1088,93 +1206,220 @@ void legsi(int mood)
 void displayText() {
     glPushMatrix();
     glColor3f(0,0,0);
-    glTranslatef(-100,-700,0);
+    glTranslatef(-400,-600,0);
     switch(text_no)
     {
     case 0:
         output(0,0,"");
         break;
     case 1:
-        output(0,0,"HII HELLO HOW ARE YOU");
+        output(0,0,"HII everyone,hope everyone are doing fine in home : 2019");
         break;
     case 2:
-        output(0,0,"HII");
+        output(0,0,"U all are going to watch THE MINION MOVIE: 2020");
         break;
     case 3:
-        output(0,0,"HII");
+        output(0,0,"Look around all minions carefully: (2020)");
         break;
     case 4:
-        output(0,0,"HII");
+        output(0,0,"No we did't care for what minion said !!!");
         break;
     case 5:
-        output(0,0,"HII");
+        output(0,0,"So Evil minion started to spread corona virus !!!(2020)");
+        break;
+    case 6:
+        output(0,0,"Brilliant minion saved its and its family life by wearing mask, Buttt!!");
+        break;
+    case 7:
+        output(0,0,"Other minion did not care and got covid-19");
         break;
     default:
-        output(0,0,"boom");
+        output(0,0,"");
     }
     glPopMatrix();
 }
-void display()
-{
-    glClear(GL_COLOR_BUFFER_BIT);
-    land();
 
-    glColor3f(1,0,0);
-    glBegin(GL_LINES);
-    glVertex2f(0,800);
-    glVertex2f(0,-1000);
+void animation(int action)
+{
+    switch(action)
+    {
+        case 1:
+            text_no=1;
+            act=1;
+            break;
+        case 2:
+            act=2;
+            text_no=2;
+            break;
+        case 3:
+            act=0;
+            eyem=1;
+            text_no=3;
+            break;
+        case 4:
+            eyem=0;
+            text_no=4;
+            break;
+        case 5:
+            moveL=1;moveR=0;
+            text_no=5;
+            break;
+        case 6:
+            if(l<500){
+            moveR=1;moveL=0;
+            text_no=6;
+            }
+            else text_no=7;
+
+            break;
+        case 7:
+            moveR=0;moveL=0;
+            act=0;
+            text_no=7;
+            setAnimation=false;
+            break;
+        default:
+            break;
+    }
+}
+void page1(){
+
+    glColor3f(0,0,0);
+
+    glBegin(GL_LINE_LOOP);
+    glVertex2f(-1260,-910);
+    glVertex2f(1260,-910);
+    glVertex2f(1260,710);
+    glVertex2f(-1260,710);
     glEnd();
 
-    displayText();
-    for(int i=-1000,mood=0;i<=1000, mood<3;i+=1000, mood++){
-    glPushMatrix();
-    glTranslatef(i,-200,0);
-    if(act==2)
-        glTranslatef(0,j,0);
-    if(act==3)
-        glRotatef(angle[3],0,0,1);
-    body(mood);                     // l is needed
-    hair(mood);
-    specsframe(mood);
+    glColor3f(0,0,1);
+    output(-550, 600, "N.M.A.M INSTITUTE OF TECHNOLOGY");
+    glColor3f(0,0,0);
+    output(-750, 520, "Department of Computer Science and Engineering");
 
-    if(mood==0)
-        mouthhappy();
-    if(mood==1)
-        mouthzombie();             // l is needed
-    if(mood==2)
-        mouthangry();
-    hand(mood);
-    cloth(mood);
-    eyes(mood);                    // l is needed
-    legsi(mood);
-    legs(mood);
-    glPopMatrix();
-    }
-    for(int i=-1000,mood=0;i<=1000,mood<3;i+=1000,mood++)
+    output(-550, 400, "Mini Project Title:");
+    output(-550, 350, "MINIONS");
+
+    output(-550, 250, "Course Code : 18CS607");
+    output(-550, 200, "Course Name : Computer Graphics Lab");
+
+    output(-550, 100, "Semester : VI");
+    output(0, 100, "Section : C");
+
+    output(-550, -20, "Submitted To :");
+    output(-550, -70, "Mr. PUNEETH R P");
+    output(-550, -120, "Assistant Professor Gd. II");
+
+    output(-550, -230, "Submitted By :");
+    output(-550, -280, "SHASHANK (4NM18CS165)");
+    output(-550, -330, "SAURAV S POOJARY (4NM18CS161)");
+
+    output(-550, -520, "Date of submission : ");
+
+    glBegin(GL_LINES);
+    glVertex2i(-1050, 490);
+    glVertex2i(1050,490);
+    glEnd();
+
+}
+void page2()
+{
+    glColor3f(0,0,0);
+    glBegin(GL_LINE_LOOP);
+    glVertex2f(-1260,-910);
+    glVertex2f(1260,-910);
+    glVertex2f(1260,710);
+    glVertex2f(-1260,710);
+    glEnd();
+    glColor3f(1,0,0);
+    output(-550, 600, "INTRODUCTION");
+    glColor3f(0,0,0);
+    glBegin(GL_LINES);
+    glVertex2i(-550, 590);
+    glVertex2i(-110,590);
+    glEnd();
+    glColor3f(0,0,1);
+    output(-950, 400, "COVID-19 simple precautions");
+    output(-950, 300, "--> Physical Distancing");
+    output(-950, 250, "--> Wearing Mask");
+    output(-950, 200, "--> Keeping Rooms Ventilated");
+    output(-950, 150, "--> Avoiding Crowds");
+    output(-950, 100, "--> Cleaning Hands and Coughing into a Bent Elbow or Tissue");
+}
+void display()
+{
+
+    glClear(GL_COLOR_BUFFER_BIT);
+    if(view == 1)
+        page1();
+    else if(view == 2)
+        page2();
+    else
     {
-        glPushMatrix();
-        glTranslatef(i,0,0);
-        shoes(mood);
-        glPopMatrix();
-    }
+        land();
+        displayText();
+        if(setAnimation==true){
+            o++;
+            if(o>10000)
+                animation(7);
+            else if(o>6000)
+                animation(6);
+            else if(o>4000)
+                animation(5);
+            else if(o>3000)
+                animation(4);
+            else if(o>2000)
+                animation(3);
+            else if(o>1000)
+                animation(2);
+            else
+                animation(1);
+        }
 
+        for(int i=-1000,mood=0;i<=1000, mood<3;i+=1000, mood++){
+        glPushMatrix();
+        glTranslatef(i,-200,0);
+        if(act==2)
+            glTranslatef(0,j,0);
+        if(act==3)
+            glRotatef(angle[3],0,0,1);
+        body(mood);                     // l is needed
+        hair(mood);
+        specsframe(mood);
+
+        if(mood==0)
+            mouthhappy();
+        if(mood==1)
+            mouthzombie();             // l is needed
+        if(mood==2)
+            mouthangry();
+        hand(mood);
+        cloth(mood);
+        eyes(mood);                    // l is needed
+        legsi(mood);
+        legs(mood);
+        glPopMatrix();
+        }
+        for(int i=-1000,mood=0;i<=1000,mood<3;i+=1000,mood++)
+        {
+            glPushMatrix();
+            glTranslatef(i,0,0);
+            shoes(mood);
+            glPopMatrix();
+        }
+    }
     glFlush();
     glutPostRedisplay();
     glutSwapBuffers();     //glutSwapBuffers swaps the buffers of the current window if double buffered
 }
-void animation()
-{
-    text_no=1;
-    act=1;
 
-    Sleep(3000);
-    act=2;
-}
 void flag_menu(int num)
 {
     switch(num)
     {
         case 1:
+            l=0;
             moveL=1;
             moveR=0;
                 break;
@@ -1200,19 +1445,14 @@ void flag_menu(int num)
                 eyem=0;
                 break;
         case 10:exit(0);
-        case 11: animation();
+        case 11:o=0; setAnimation=true; break;
+        case 21: view=1; break;
+        case 22: view=2; break;
+        case 23: view=3; break;
         default:break;
     }
   glutPostRedisplay();
 }
-
-/*
-
-
-glColor3f(0,0,1);
-    output(160, 660, "N.M.A.M INSTITUTE OF TECHNOLOGY");
-*/
-
 int main()
 {
     glutInitDisplayMode(GLUT_DOUBLE | GLUT_RGB);
@@ -1222,20 +1462,26 @@ int main()
     glutIdleFunc(Idle);
     glutReshapeFunc(myReshape);
     glutDisplayFunc(display);
-    submenu_id = glutCreateMenu(flag_menu);
+
+    submenu_page = glutCreateMenu(flag_menu);
+	glutAddMenuEntry("Home",21);
+	glutAddMenuEntry("Instructions",22);
+	glutAddMenuEntry("Movie",23);
+
+	submenu_id1 = glutCreateMenu(flag_menu);
 	glutAddMenuEntry("left",1);
 	glutAddMenuEntry("right",2);
-	submenu_id1 = glutCreateMenu(flag_menu);
 	glutAddMenuEntry("Hi",4);
 	glutAddMenuEntry("Get Excited",5);
 	glutAddMenuEntry("Look Around",7);
 	glutAddMenuEntry("Look Straight",8);
 	glutAddMenuEntry("Reset",9);
+
 	glutCreateMenu(flag_menu);
-	glutAddSubMenu("Move", submenu_id);
-	glutAddSubMenu("Animation",submenu_id1);
+	glutAddSubMenu("page",submenu_page);
+	glutAddSubMenu("movement",submenu_id1);
+	glutAddMenuEntry("Start Animation",11);
 	glutAddMenuEntry("Quit",10);
-	glutAddMenuEntry("Animation",11);
 	glutAttachMenu(GLUT_RIGHT_BUTTON);
     glutMainLoop();
     return 0;
