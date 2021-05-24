@@ -172,9 +172,9 @@ void body(int mood)
         glEnd();
 
         glPushMatrix();
-        glTranslatef(l,-50,0);   //setting base of a semicircle as y=-50
+        glTranslatef(l,-50,0);
         glScalef(1,0.6,1);
-        circle(170,180,360);     // semicircle from 180 to 360
+        circle(170,180,360);
         glPopMatrix();
 
         glPushMatrix();
@@ -182,26 +182,26 @@ void body(int mood)
         glBegin(GL_POLYGON);//T
         glVertex2f(-10,350);
         glVertex2f(10,350);
-        glVertex2f(10,400);
-        glVertex2f(-10,400);
+        glVertex2f(10,380);
+        glVertex2f(-10,380);
         glEnd();
         glBegin(GL_POLYGON);//T
-        glVertex2f(-30,400);
+        glVertex2f(-30,380);
+        glVertex2f(30,380);
         glVertex2f(30,400);
-        glVertex2f(30,420);
-        glVertex2f(-30,420);
+        glVertex2f(-30,400);
         glEnd();
         glBegin(GL_POLYGON);//lB
         glVertex2f(170,200);
         glVertex2f(170,180);
-        glVertex2f(200,180);
-        glVertex2f(200,200);
+        glVertex2f(190,180);
+        glVertex2f(190,200);
         glEnd();
         glBegin(GL_POLYGON);//Lb
-        glVertex2f(200,220);
+        glVertex2f(180,220);
+        glVertex2f(180,160);
         glVertex2f(200,160);
-        glVertex2f(220,160);
-        glVertex2f(220,220);
+        glVertex2f(200,220);
         glEnd();
         glBegin(GL_POLYGON);//RB
         glVertex2f(-170,200);
@@ -210,34 +210,34 @@ void body(int mood)
         glVertex2f(-170,180);
         glEnd();
         glBegin(GL_POLYGON);//Rb
-        glVertex2f(-220,220);
-        glVertex2f(-220,160);
-        glVertex2f(-200,160);
         glVertex2f(-200,220);
+        glVertex2f(-200,160);
+        glVertex2f(-180,160);
+        glVertex2f(-180,220);
         glEnd();
         glBegin(GL_POLYGON);//RTcheck
-        glVertex2f(80,320);
-        glVertex2f(90,300);
-        glVertex2f(155,330);
+        glVertex2f(80,300);
+        glVertex2f(90,280);
+        glVertex2f(155,310);
+        glVertex2f(140,330);
+        glEnd();
+        glBegin(GL_POLYGON);//RTcheck
+        glVertex2f(130,340);
+        glVertex2f(160,300);
+        glVertex2f(170,310);
         glVertex2f(140,350);
         glEnd();
-        glBegin(GL_POLYGON);//RTcheck
-        glVertex2f(130,360);
-        glVertex2f(160,320);
-        glVertex2f(170,330);
-        glVertex2f(140,370);
-        glEnd();
         glBegin(GL_POLYGON);//LTcheck
-        glVertex2f(-155,330);
-        glVertex2f(-90,300);
-        glVertex2f(-80,320);
-        glVertex2f(-140,350);
+        glVertex2f(-155,310);
+        glVertex2f(-90,280);
+        glVertex2f(-80,300);
+        glVertex2f(-140,330);
         glEnd();
         glBegin(GL_POLYGON);//RTcheck
-        glVertex2f(-170,330);
-        glVertex2f(-160,320);
-        glVertex2f(-130,360);
-        glVertex2f(-140,370);
+        glVertex2f(-170,310);
+        glVertex2f(-160,300);
+        glVertex2f(-130,340);
+        glVertex2f(-140,350);
         glEnd();
         glPopMatrix();
         return;
@@ -253,26 +253,26 @@ void body(int mood)
         glBegin(GL_POLYGON);//T
         glVertex2f(-10,350);
         glVertex2f(10,350);
-        glVertex2f(10,400);
-        glVertex2f(-10,400);
+        glVertex2f(10,380);
+        glVertex2f(-10,380);
         glEnd();
         glBegin(GL_POLYGON);//T
-        glVertex2f(-30,400);
+        glVertex2f(-30,380);
+        glVertex2f(30,380);
         glVertex2f(30,400);
-        glVertex2f(30,420);
-        glVertex2f(-30,420);
+        glVertex2f(-30,400);
         glEnd();
         glBegin(GL_POLYGON);//lB
         glVertex2f(170,200);
         glVertex2f(170,180);
-        glVertex2f(200,180);
-        glVertex2f(200,200);
+        glVertex2f(190,180);
+        glVertex2f(190,200);
         glEnd();
         glBegin(GL_POLYGON);//Lb
-        glVertex2f(200,220);
+        glVertex2f(180,220);
+        glVertex2f(180,160);
         glVertex2f(200,160);
-        glVertex2f(220,160);
-        glVertex2f(220,220);
+        glVertex2f(200,220);
         glEnd();
         glBegin(GL_POLYGON);//RB
         glVertex2f(-170,200);
@@ -281,34 +281,34 @@ void body(int mood)
         glVertex2f(-170,180);
         glEnd();
         glBegin(GL_POLYGON);//Rb
-        glVertex2f(-220,220);
-        glVertex2f(-220,160);
-        glVertex2f(-200,160);
         glVertex2f(-200,220);
+        glVertex2f(-200,160);
+        glVertex2f(-180,160);
+        glVertex2f(-180,220);
         glEnd();
         glBegin(GL_POLYGON);//RTcheck
-        glVertex2f(80,320);
-        glVertex2f(90,300);
-        glVertex2f(155,330);
+        glVertex2f(80,300);
+        glVertex2f(90,280);
+        glVertex2f(155,310);
+        glVertex2f(140,330);
+        glEnd();
+        glBegin(GL_POLYGON);//RTcheck
+        glVertex2f(130,340);
+        glVertex2f(160,300);
+        glVertex2f(170,310);
         glVertex2f(140,350);
         glEnd();
-        glBegin(GL_POLYGON);//RTcheck
-        glVertex2f(130,360);
-        glVertex2f(160,320);
-        glVertex2f(170,330);
-        glVertex2f(140,370);
-        glEnd();
         glBegin(GL_POLYGON);//LTcheck
-        glVertex2f(-155,330);
-        glVertex2f(-90,300);
-        glVertex2f(-80,320);
-        glVertex2f(-140,350);
+        glVertex2f(-155,310);
+        glVertex2f(-90,280);
+        glVertex2f(-80,300);
+        glVertex2f(-140,330);
         glEnd();
         glBegin(GL_POLYGON);//RTcheck
-        glVertex2f(-170,330);
-        glVertex2f(-160,320);
-        glVertex2f(-130,360);
-        glVertex2f(-140,370);
+        glVertex2f(-170,310);
+        glVertex2f(-160,300);
+        glVertex2f(-130,340);
+        glVertex2f(-140,350);
         glEnd();
         glPopMatrix();
     }
@@ -1205,6 +1205,7 @@ void legsi(int mood)
 }
 void displayText() {
     glPushMatrix();
+    font =  GLUT_BITMAP_TIMES_ROMAN_24;
     glColor3f(0,0,0);
     glTranslatef(-400,-600,0);
     switch(text_no)
@@ -1213,29 +1214,30 @@ void displayText() {
         output(0,0,"");
         break;
     case 1:
-        output(0,0,"HII everyone,hope everyone are doing fine in home : 2019");
+        output(0,0,"HII everyone,hope everyone are doing fine in home.");
         break;
     case 2:
-        output(0,0,"U all are going to watch THE MINION MOVIE: 2020");
+        output(0,0,"You are all going to watch THE MINION MOVIE");
         break;
     case 3:
-        output(0,0,"Look around all minions carefully: (2020)");
+        output(0,0,"A year back, Evil minion came to 'The Minion land'");
         break;
     case 4:
-        output(0,0,"No we did't care for what minion said !!!");
+        output(0,0,"It wanted to conquer 'The Minion land'");
         break;
     case 5:
-        output(0,0,"So Evil minion started to spread corona virus !!!(2020)");
+        output(0,0,"So it started to attack other minions!!!");
         break;
     case 6:
-        output(0,0,"Brilliant minion saved its and its family life by wearing mask, Buttt!!");
+        output(0,0,"Clever minion saved its life by wearing a mask");
         break;
     case 7:
-        output(0,0,"Other minion did not care and got covid-19");
+        output(0,0,"Irresponsible minion got defeated by Evil minion");
         break;
     default:
         output(0,0,"");
     }
+    font =  GLUT_BITMAP_9_BY_15;
     glPopMatrix();
 }
 
@@ -1299,7 +1301,7 @@ void page1(){
     output(-750, 520, "Department of Computer Science and Engineering");
 
     output(-550, 400, "Mini Project Title:");
-    output(-550, 350, "MINIONS");
+    output(-550, 350, "MINION - Covid animation");
 
     output(-550, 250, "Course Code : 18CS607");
     output(-550, 200, "Course Name : Computer Graphics Lab");
@@ -1333,19 +1335,39 @@ void page2()
     glVertex2f(-1260,710);
     glEnd();
     glColor3f(1,0,0);
-    output(-550, 600, "INTRODUCTION");
+    output(-50, 600, "INTRODUCTION");
     glColor3f(0,0,0);
     glBegin(GL_LINES);
-    glVertex2i(-550, 590);
-    glVertex2i(-110,590);
+    glVertex2i(-50, 590);
+    glVertex2i(250,590);
     glEnd();
     glColor3f(0,0,1);
-    output(-950, 400, "COVID-19 simple precautions");
-    output(-950, 300, "--> Physical Distancing");
-    output(-950, 250, "--> Wearing Mask");
-    output(-950, 200, "--> Keeping Rooms Ventilated");
-    output(-950, 150, "--> Avoiding Crowds");
-    output(-950, 100, "--> Cleaning Hands and Coughing into a Bent Elbow or Tissue");
+    glPushMatrix();
+    glTranslatef(0,200,0);
+    glColor3f(1,0,1);
+    output(-950, 200, "Objective of this project is to explain covid-19 pandemic through simple animation");
+    //output(-950, 150, "Objective of this project is to bring awareness about the covid-19 pandemic");
+
+    glColor3f(0,0,1);
+    output(-950, 90, "Features of the project");
+    glColor3f(0,0,0);
+    output(-900, 40, "-->Simple Animation Movie");
+    output(-900, -10, "-->Movements for the minions:left,right,jump,wave hands,look around");
+    output(-900, -60, "-->These options can be accessed using menu and submenu ");
+    //output(-950, -100, "--> ");
+    glPopMatrix();
+    glPushMatrix();
+    glTranslatef(0,-400,0);
+    glColor3f(0,0,1);
+    output(-950, 200, "COVID-19 simple precautions");
+    glColor3f(0,0,0);
+    output(-950, 100, "--> Physical Distancing");
+    output(-950, 50, "--> Wearing Mask");
+    output(-950, 0, "--> Keeping Rooms Ventilated");
+    output(-950, -50, "--> Avoiding Crowds");
+    output(-950, -100, "--> Cleaning Hands and Coughing into a Bent Elbow or Tissue");
+    glPopMatrix();
+
 }
 void display()
 {
@@ -1419,21 +1441,30 @@ void flag_menu(int num)
     switch(num)
     {
         case 1:
+            eyem=0;
+            act=0;
             l=0;
             moveL=1;
             moveR=0;
                 break;
         case 2:
-            moveL=0;
-            moveR=1;
+                eyem=0;
+                act=0;
+                moveL=0;
+                moveR=1;
                 break;
         case 4:
-                text_no=1;
+                moveL=0;
+                moveR=0;
                 act=1;
                 break;
-        case 5:act=2;
+        case 5:
+                act=2;
                 break;
-        case 7:eyem=1;
+        case 7:
+                moveL=0;
+                moveR=0;
+                eyem=1;
                 break;
         case 8:eyem=0;
                 break;
@@ -1443,6 +1474,8 @@ void flag_menu(int num)
                 moveL=0;
                 moveR=0;
                 eyem=0;
+                text_no=0;
+                setAnimation=false;
                 break;
         case 10:exit(0);
         case 11:o=0; setAnimation=true; break;
