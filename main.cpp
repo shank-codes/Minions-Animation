@@ -336,26 +336,6 @@ void body(int mood)
     glScalef(1,0.6,1);
     circle(170,180,360);     // semicircle from 180 to 360
     glPopMatrix();
-
-    /*
-    glPushMatrix();
-    glTranslatef(400,200,0);
-    circle(170,0,180);
-    glPopMatrix();
-
-    glBegin(GL_POLYGON);
-    glVertex2f(230,-50);
-    glVertex2f(570,-50);
-    glVertex2f(570,200);
-    glVertex2f(230,200);
-    glEnd();
-
-    glPushMatrix();
-    glTranslatef(400,-50,0);
-    glScalef(1,0.6,1);
-    circle(170,180,360);
-    glPopMatrix();
-    */
 }
 void hair(int mood)
 {
@@ -1232,7 +1212,7 @@ void displayText() {
         output(0,0,"Clever minion saved its life by wearing a mask");
         break;
     case 7:
-        output(0,0,"Irresponsible minion got defeated by Evil minion");
+        output(0,0,"Unfortunately other minion got defeated by Evil minion!!");
         break;
     default:
         output(0,0,"");
@@ -1301,7 +1281,7 @@ void page1(){
     output(-750, 520, "Department of Computer Science and Engineering");
 
     output(-550, 400, "Mini Project Title:");
-    output(-550, 350, "MINION - Covid animation");
+    output(-550, 350, "MINION - Animation");
 
     output(-550, 250, "Course Code : 18CS607");
     output(-550, 200, "Course Name : Computer Graphics Lab");
